@@ -1,43 +1,40 @@
 ---
 name: Macadmins Cluster
-description: Collection of Macadmin-related services
-keywords: os x,macadmin,munki,deploystudio,reposado
+description: Testing full suite of Macadmin related services
+keywords: ''
 type: Default
 documentation: ''
 images:
-- name: macadmins_munki_latest
-  source: macadmins/munki:latest
-  category: Base
+- name: postgres
+  source: postgres:latest
+  category: Database
   type: Default
-- name: macadmins_crypt-server
-  source: macadmins/crypt-server:latest
-  category: Services
-  type: Default
-- name: macadmins_reposado
-  source: macadmins/reposado:latest
-  category: Services
-  type: Default
-- name: macadmins_spirit
-  source: macadmins/spirit:latest
-  category: Services
-  type: Default
-  ports:
-  - host_port: '60080'
-    container_port: '60080'
-    proto: TCP
-- name: macadmins_macadmins-sal
-  source: macadmins/macadmins-sal:latest
-  category: Reporting
-  type: Default
-- name: macadmins_munkireport-php
-  source: macadmins/munkireport-php:latest
-  category: Reporting
-  type: Default
-- name: macadmins_bsdpy
-  source: macadmins/bsdpy:latest
-  category: Services
-  type: Default
+  environment:
+  - variable: dummy
+    value: blah
+  volumes:
+  - host_path: "/data/postgres"
+    container_path: "/var/lib/postgresql/data"
 - name: macadmins_munkiwebadmin
   source: macadmins/munkiwebadmin:latest
   category: Services
   type: Default
+  ports:
+  - host_port: '8898'
+    container_port: '80'
+    proto: TCP
+  links:
+  - service: postgres
+    alias: db
+  environment:
+  - variable: ADMIN_PASS
+    value: pass
+  - variable: DB_NAME
+    value: munkiwebadmin
+  - variable: DB_USER
+    value: admin
+  - variable: DB_PASS
+    value: password
+  volumes:
+  - host_path: "/data/mwa"
+    container_path: "/munki_repo"
