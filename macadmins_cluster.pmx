@@ -38,7 +38,25 @@ images:
   volumes:
   - host_path: "/data/mwa"
     container_path: "/munki_repo"
-- name: macadmins_macadmins-sal
+- name: sal
   source: macadmins/macadmins-sal:latest
   category: Services
   type: Default
+  - host_port: '8899'
+    container_port: '80'
+    proto: TCP
+  links:
+  - service: postgres
+    alias: db
+  environment:
+  - variable: ADMIN_PASS
+    value: pass
+  - variable: DB_NAME
+    value: sal
+  - variable: DB_USER
+    value: admin
+  - variable: DB_PASS
+    value: password
+  volumes:
+  - host_path: "/data/sal"
+    container_path: "/home/app/sal/db"
