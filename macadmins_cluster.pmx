@@ -15,7 +15,7 @@ images:
   volumes:
   - host_path: "/data/postgres"
     container_path: "/var/lib/postgresql/data"
-- name: macadmins_munkiwebadmin
+- name: munkiwebadmin
   source: macadmins/munkiwebadmin:latest
   category: Services
   type: Default
