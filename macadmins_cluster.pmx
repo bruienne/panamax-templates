@@ -38,3 +38,7 @@ images:
   volumes:
   - host_path: "/data/mwa"
     container_path: "/munki_repo"
+- name: macadmins_macadmins-sal
+  source: macadmins/macadmins-sal:latest
+  category: Services
+  type: Default
