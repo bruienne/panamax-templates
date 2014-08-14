@@ -78,11 +78,11 @@ images:
   type: Default
   ports:
   - host_port: '67'
-    containerr_port: '67'
-    proto: 'UDP'
+    container_port: '67'
+    proto: UDP
   - host_port: '69'
-    containerr_port: '69'
-    proto: 'UDP'
+    container_port: '69'
+    proto: UDP
   volumes:
   - host_path: "/data/bsdpy"
     container_path: "/nbi"
