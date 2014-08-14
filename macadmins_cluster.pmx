@@ -1,6 +1,6 @@
 ---
 name: Macadmins Cluster
-description: Testing full suite of Macadmin related services
+description: Services for Macadmins
 keywords: ''
 type: Default
 documentation: ''
@@ -17,7 +17,7 @@ images:
     container_path: "/var/lib/postgresql/data"
 - name: munkiwebadmin
   source: macadmins/munkiwebadmin:latest
-  category: Services
+  category: Reporting
   type: Default
   ports:
   - host_port: '8898'
@@ -40,7 +40,7 @@ images:
     container_path: "/munki_repo"
 - name: sal
   source: macadmins/macadmins-sal:latest
-  category: Services
+  category: Reporting
   type: Default
   ports:
   - host_port: '8899'
@@ -63,7 +63,7 @@ images:
     container_path: "/home/app/sal/db"
 - name: munkireport-php
   source: macadmins/munkireport-php:latest
-  category: Services
+  category: Reporting
   type: Default
   ports:
   - host_port: '8900'
@@ -72,3 +72,7 @@ images:
   volumes:
   - host_path: "/data/munkireport"
     container_path: "/data/munkireport"
+- name: macadmins_bsdpy
+  source: macadmins/bsdpy:latest
+  category: Netboot
+  type: Default
