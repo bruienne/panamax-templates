@@ -83,6 +83,9 @@ images:
   - host_port: '69'
     container_port: '69'
     proto: UDP
+  - host_port: '80'
+    container_port: '80'
+    proto: UDP
   volumes:
   - host_path: "/data/bsdpy"
     container_path: "/nbi"
