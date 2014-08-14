@@ -61,3 +61,14 @@ images:
   volumes:
   - host_path: "/data/sal"
     container_path: "/home/app/sal/db"
+- name: munkireport-php
+  source: macadmins/munkireport-php:latest
+  category: Services
+  type: Default
+  ports:
+  - host_port: '8900'
+    container_port: '80'
+    proto: TCP
+  volumes:
+  - host_path: "/data/munkireport"
+    container_path: "/data/munkireport"
