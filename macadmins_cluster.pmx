@@ -92,7 +92,7 @@ images:
   volumes:
   - host_path: "/data/bsdpy"
     container_path: "/nbi"
-- name: mailgun_vulcand
+- name: vulcand
   source: mailgun/vulcand:latest
   category: Load Balancer
   type: Default
