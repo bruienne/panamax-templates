@@ -1,6 +1,6 @@
 ---
 name: Macadmins Cluster
-description: Services for Macadmins
+description: Services for Mac Admins
 keywords: ''
 type: Default
 documentation: ''
@@ -88,7 +88,21 @@ images:
     proto: TCP
   environment:
   - variable: DOCKER_BSDPY_IP
-    value: CHANGEME
+    value: 10.0.1.26
   volumes:
   - host_path: "/data/bsdpy"
     container_path: "/nbi"
+- name: mailgun_vulcand
+  source: mailgun/vulcand:latest
+  category: Load Balancer
+  type: Default
+  ports:
+  - host_port: '8181'
+    container_port: '8181'
+    proto: TCP
+  - host_port: '8182'
+    container_port: '8182'
+    proto: TCP
+  - host_port: '80'
+    container_port: '80'
+    proto: TCP
