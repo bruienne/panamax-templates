@@ -1,6 +1,6 @@
 ---
 name: Macadmins Cluster
-description: Services for Mac Admins
+description: Sample Mac Admins services
 keywords: ''
 type: Default
 documentation: ''
@@ -9,9 +9,6 @@ images:
   source: postgres:latest
   category: Database
   type: Default
-  environment:
-  - variable: dummy
-    value: blah
   volumes:
   - host_path: "/data/postgres"
     container_path: "/var/lib/postgresql/data"
@@ -88,7 +85,7 @@ images:
     proto: TCP
   environment:
   - variable: DOCKER_BSDPY_IP
-    value: 10.0.1.26
+    value: 10.0.1.36
   volumes:
   - host_path: "/data/bsdpy"
     container_path: "/nbi"
@@ -102,7 +99,4 @@ images:
     proto: TCP
   - host_port: '8182'
     container_port: '8182'
-    proto: TCP
-  - host_port: '80'
-    container_port: '80'
     proto: TCP
