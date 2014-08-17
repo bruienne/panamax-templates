@@ -1,6 +1,6 @@
 ---
 name: Macadmins Cluster
-description: Sample Mac Admins services
+description: Services for Mac Admins
 keywords: ''
 type: Default
 documentation: ''
@@ -80,9 +80,6 @@ images:
   - host_port: '69'
     container_port: '69'
     proto: UDP
-  - host_port: '80'
-    container_port: '80'
-    proto: TCP
   environment:
   - variable: DOCKER_BSDPY_IP
     value: 10.0.1.36
@@ -100,3 +97,13 @@ images:
   - host_port: '8182'
     container_port: '8182'
     proto: TCP
+  - host_port: '80'
+    container_port: '80'
+    proto: TCP
+- name: ehazlett_havok
+  source: ehazlett/havok:latest
+  category: Load Balancer
+  type: Default
+  volumes:
+  - host_path: "/var/run/docker.sock"
+    container_path: "/var/run/docker.sock"
