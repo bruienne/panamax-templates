@@ -100,10 +100,15 @@ images:
   - host_port: '80'
     container_port: '80'
     proto: TCP
-- name: ehazlett_havok
+  run: bash -c '/opt/vulcan/vulcand -apiInterface="0.0.0.0" -interface="0.0.0.0" --etcd=http://172.17.42.1:4001 -port=80 -apiPort=8182'
+- name: havok
   source: ehazlett/havok:latest
   category: Load Balancer
   type: Default
+  links:
+  - service: vulcand
+    alias: vulcand
   volumes:
   - host_path: "/var/run/docker.sock"
     container_path: "/var/run/docker.sock"
+  run: -etcd-machines "http://172.17.42.1:4001" -host-ip 172.17.42.1 -root-domain local -rate-limit 10 -conn-limit 5
